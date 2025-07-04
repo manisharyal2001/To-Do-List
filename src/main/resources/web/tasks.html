@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tasks - To-Do App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --warning: #f8961e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .logout-btn {
+            background-color: var(--danger);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #d1145a;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .task-form {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .task-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .task-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .task-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .task-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .task-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .task-priority {
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .priority-high {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .priority-medium {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .priority-low {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .complete-btn {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .task-completed {
+            opacity: 0.7;
+            border-left: 4px solid var(--success);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">✓ To-Do App</div>
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+    </header>
+
+    <h1>My Tasks</h1>
+
+    <div class="task-form">
+        <h2>Add New Task</h2>
+        <form id="taskForm">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Task title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" rows="3" placeholder="Task description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="dueDate">Due Date</label>
+                <input type="date" id="dueDate">
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <select id="priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Add Task</button>
+        </form>
+    </div>
+
+    <div class="task-list" id="taskList">
+        <!-- Tasks will be loaded here dynamically -->
+    </div>
+</div>
+
+<script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = 'login.html';
+    }
+
+    const headers = {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    };
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+        try {
+            await fetch('/api/logout', {
+                method: 'POST',
+                headers
+            });
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        } catch (err) {
+            alert('Logout failed. Please try again.');
+        }
+    });
+
+    // Task form submission
+    document.getElementById('taskForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const task = {
+            title: document.getElementById('title').value,
+            description: document.getElementById('description').value,
+            dueDate: document.getElementById('dueDate').value,
+            priority: document.getElementById('priority').value,
+            completed: false
+        };
+
+        try {
+            await fetch('/api/tasks', {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(task)
+            });
+            document.getElementById('taskForm').reset();
+            loadTasks();
+        } catch (err) {
+            alert('Failed to add task. Please try again.');
+        }
+    });
+
+    // Load tasks
+    async function loadTasks() {
+        try {
+            const res = await fetch('/api/tasks', { headers });
+            const data = await res.json();
+            renderTasks(data.tasks || []);
+        } catch (err) {
+            console.error('Failed to load tasks:', err);
+        }
+    }
+
+    // Render tasks
+    function renderTasks(tasks) {
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = '';
+
+        tasks.forEach(task => {
+            const taskCard = document.createElement('div');
+            taskCard.className = `task-card ${task.completed ? 'task-completed' : ''}`;
+
+            taskCard.innerHTML = `
+                <h3 class="task-title">${task.title}</h3>
+                <p class="task-description">${task.description || 'No description'}</p>
+                <div class="task-meta">
+                    <span>Due: ${task.dueDate || 'No date'}</span>
+                    <span class="task-priority priority-${task.priority.toLowerCase()}">${task.priority}</span>
+                </div>
+                <div class="task-actions">
+                    <button onclick="toggleTaskCompletion('${task._id}', ${!task.completed})"
+                            class="action-btn complete-btn">
+                        ${task.completed ? 'Mark Incomplete' : 'Mark Complete'}
+                    </button>
+                    <button onclick="deleteTask('${task._id}')"
+                            class="action-btn delete-btn">
+                        Delete
+                    </button>
+                </div>
+            `;
+
+            taskList.appendChild(taskCard);
+        });
+    }
+
+    // Toggle task completion
+    async function toggleTaskCompletion(id, status) {
+        try {
+            const endpoint = status ? 'complete' : 'incomplete';
+            await fetch(`/api/tasks/${id}/${endpoint}`, {
+                method: 'POST',
+                headers
+            });
+            loadTasks();
+        } catch (err) {
+            alert('Failed to update task. Please try again.');
+        }
+    }
+
+    // Delete task
+    async function deleteTask(id) {
+        if (confirm('Are you sure you want to delete this task?')) {
+            try {
+                await fetch(`/api/tasks/${id}`, {
+                    method: 'DELETE',
+                    headers
+                });
+                loadTasks();
+            } catch (err) {
+                alert('Failed to delete task. Please try again.');
+            }
+        }
+    }
+
+    // Initial load
+    loadTasks();
+</script>
+</body>
+</html>

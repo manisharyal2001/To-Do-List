@@ -1,0 +1,21 @@
+{
+  "mongo": {
+    "connection_string": "mongodb://localhost:27017",
+    "db_name": "To_Do_List"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379
+  },
+  "jwt": {
+    "secret_key": "M@nish",
+    "expires_in_minutes": 60
+  },
+  "httpPort": 8080,
+  "email": {
+    "from": "manisharyal490@gmail.com",
+    "password": "ksxh nigx zdkx jxom",
+    "smtp_host": "smtp.gmail.com",
+    "smtp_port": 587
+  }
+}
