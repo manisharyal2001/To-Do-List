@@ -2,7 +2,7 @@
 
 A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-based authentication**, **Redis token management**, and **asynchronous email notifications**, built using **Spring Boot**.
 
-![Landing Page](images/login.png)  
+![Landing Page](src/images/login.png)  
 *Figure 1: Landing page with registration and login options*
 
 ---
@@ -33,21 +33,19 @@ A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-bas
 ## 📸 Screenshots
 
 ### 🔐 Registration Page
-![Register](images/ssregister.png)  
+![Register](src/images/ssregister.png)  
 *Figure 2: User registration screen*
 
 ### 📋 Task Management
-![Tasks](images/sstask.png)  
+![Tasks](src/images/sstask.png)  
 *Figure 3: Add or edit tasks*
 
 ### 🗃️ MongoDB Collections
-![Users Collection](images/mongousers.png)  
-![Tasks Collection](images/mongotask.png)  
+![Users Collection](src/images/mongousers.png)  
+![Tasks Collection](src/images/mongotask.png)  
 *Figure 4: MongoDB document structure for users and tasks*
 
 ---
-
-## 🧰 Getting Started
 
 ### ✅ Prerequisites
 
