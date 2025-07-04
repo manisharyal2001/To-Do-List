@@ -1,118 +1,103 @@
-# To-Do List Application
+# 📝 To-Do List Application
 
-A secure, scalable Java-based To-Do List application built with MongoDB, JWT authentication, Redis for token management, and asynchronous email delivery.
+A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-based authentication**, **Redis token management**, and **asynchronous email notifications**, built using **Spring Boot**.
 
-![Landing Page](images/login.png)
+![Landing Page](images/login.png)  
 *Figure 1: Landing page with registration and login options*
 
 ---
 
-## Features
+## 🚀 Features
 
-- 🔐 **Secure user authentication** with JWT and Redis token storage
-- ✉️ **Asynchronous email delivery** for registration and password reset
-- 📝 **Full CRUD operations** for to-do tasks
-- 🔄 **Token refresh mechanism**
-- ⏰ **Task reminders** with email notifications
-- 📊 **Paginated, filterable, and sortable task views**
+- 🔐 Secure user authentication using JWT and Redis
+- ✉️ Asynchronous email notifications (registration, password reset, reminders)
+- 📝 Full CRUD operations for to-do tasks
+- 🔄 Token refresh mechanism for session management
+- ⏰ Task reminders sent via email
+- 📊 Paginated, filterable, and sortable task views
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Backend:** Java (Spring Boot)
-- **Database:** MongoDB
-- **Authentication:** JWT with Redis storage
-- **Email:** Spring Mail with async processing
-- **API:** RESTful design
-
----
-![Landing Page](images/ssregister.png)
-*Figure 2: Registration for new users*
-
----
-![Landing Page](images/sstask.png)
-*Figure 2: Edit existing task or add new task*
+| Layer         | Technology           |
+|---------------|----------------------|
+| **Backend**   | Java 17, Spring Boot |
+| **Database**  | MongoDB              |
+| **Auth**      | JWT, Redis           |
+| **Email**     | Spring Mail (Async)  |
+| **API**       | RESTful Design       |
 
 ---
 
+## 📸 Screenshots
 
+### 🔐 Registration Page
+![Register](images/ssregister.png)  
+*Figure 2: User registration screen*
 
+### 📋 Task Management
+![Tasks](images/sstask.png)  
+*Figure 3: Add or edit tasks*
 
+### 🗃️ MongoDB Collections
+![Users Collection](images/mongousers.png)  
+![Tasks Collection](images/mongotask.png)  
+*Figure 4: MongoDB document structure for users and tasks*
 
-![MongoDB Structure](images/mongousers.png)
 ---
-![MongoDB Structure](images/mongotask.png)
 
-*Figure 3: MongoDB document structure for users and tasks*
+## 🧰 Getting Started
 
----
-
-##  Getting Started
-
-###  Prerequisites
+### ✅ Prerequisites
 
 - Java 17+
 - MongoDB 5.0+
 - Redis 6.0+
-- SMTP server credentials (or [MailHog](https://github.com/mailhog/MailHog) for local development)
+- SMTP credentials (or [MailHog](https://github.com/mailhog/MailHog) for local testing)
 
-###  Installation
+---
 
-Clone the repository:
+### 📦 Installation
 
 ```bash
-git clone https://github.com/yourusername/todo-list-app.git
-cd todo-list-app
-Copy and configure application properties:
+git clone https://github.com/manisharyal2001/To-Do-List.git
+cd To-Do-List
+Copy the example config and update credentials:
 
 bash
 Copy
 Edit
 cp src/main/resources/application.example.properties src/main/resources/application.properties
-Edit the file with your MongoDB, Redis, and SMTP credentials.
+Update your application.properties with MongoDB, Redis, and SMTP credentials.
 
-Build and run the application:
-
+▶️ Run the Application
 bash
 Copy
 Edit
 ./mvnw spring-boot:run
-🖼 Application Screens
-
-Figure 3: User registration screen
-
-
-Figure 4: User login screen
-
-
-Figure 5: Task creation and management interface
-
-API Documentation
-Authentication
+📘 API Documentation
+🔐 Authentication
 Endpoint	Method	Description
 /api/auth/register	POST	Register new user
-/api/auth/login	POST	Login and get JWT
+/api/auth/login	POST	Authenticate and get JWT
 /api/auth/refresh	POST	Refresh JWT token
-/api/auth/logout	POST	Invalidate JWT
+/api/auth/logout	POST	Logout and invalidate JWT
 /api/auth/password-reset	POST	Initiate password reset
 /api/auth/password-reset/confirm	POST	Complete password reset
 
-📝 Tasks
+📝 Task Management
 Endpoint	Method	Description
-/api/tasks	GET	Get paginated tasks
+/api/tasks	GET	Retrieve all tasks (paginated)
 /api/tasks	POST	Create new task
 /api/tasks/{id}	GET	Get task by ID
-/api/tasks/{id}	PUT	Update task
-/api/tasks/{id}	DELETE	Delete task
+/api/tasks/{id}	PUT	Update task by ID
+/api/tasks/{id}	DELETE	Delete task by ID
 /api/tasks/{id}/complete	PATCH	Mark task as complete
 /api/tasks/{id}/incomplete	PATCH	Mark task as incomplete
 
-
-Figure 6: Sample task data structure in MongoDB
-
-Configuration
-Edit src/main/resources/application.properties:
+⚙️ Configuration
+In src/main/resources/application.properties:
 
 properties
 Copy
@@ -133,27 +118,30 @@ spring.mail.host=smtp.example.com
 spring.mail.port=587
 spring.mail.username=user@example.com
 spring.mail.password=password
- Running Tests
+🧪 Running Tests
 bash
 Copy
 Edit
 ./mvnw test
- Deployment
-Build the JAR:
-
+🚀 Deployment
+Build the JAR
 bash
 Copy
 Edit
 ./mvnw clean package
-Run with production profile:
-
+Run with Production Profile
 bash
 Copy
 Edit
 java -jar target/todo-list-app.jar --spring.profiles.active=prod
- Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+🤝 Contributing
+Pull requests are welcome!
+For major changes, please open an issue first to discuss what you’d like to improve or add.
 
- License
-This project is licensed under the MIT License.
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+yaml
+Copy
+Edit
 
