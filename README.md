@@ -1,6 +1,6 @@
 # 📝 To-Do List Application
 
-A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-based authentication**, **Redis token management**, and **asynchronous email notifications**, built using **Spring Boot**.
+A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-based authentication**, **Redis token management**, and **asynchronous email notifications**, built using **Vert.X**.
 
 ![Landing Page](src/images/login.png)  
 *Figure 1: Landing page with registration and login options*
