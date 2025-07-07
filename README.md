@@ -48,12 +48,3 @@ A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-bas
 ```bash
 git clone https://github.com/manisharyal2001/To-Do-List.git
 cd To-Do-List
-Copy the example config and update credentials:
-
-📄 License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-yaml
-Copy
-Edit
-
