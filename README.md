@@ -16,19 +16,6 @@ A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-bas
 - ⏰ Task reminders sent via email
 - 📊 Paginated, filterable, and sortable task views
 
----
-
-## 🛠 Tech Stack
-
-| Layer         | Technology           |
-|---------------|----------------------|
-| **Backend**   | Java 17, Vert.X |
-| **Database**  | MongoDB              |
-| **Auth**      | JWT, Redis           |
-| **Email**     | Spring Mail (Async)  |
-| **API**       | RESTful Design       |
-
----
 
 ## 📸 Screenshots
 
@@ -62,37 +49,6 @@ A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-bas
 git clone https://github.com/manisharyal2001/To-Do-List.git
 cd To-Do-List
 Copy the example config and update credentials:
-
-bash
-Copy
-Edit
-cp src/main/resources/application.example.properties src/main/resources/application.properties
-Update your application.properties with MongoDB, Redis, and SMTP credentials.
-
-▶️ Run the Application
-bash
-Copy
-Edit
-./mvnw spring-boot:run
-📘 API Documentation
-🔐 Authentication
-Endpoint	Method	Description
-/api/auth/register	POST	Register new user
-/api/auth/login	POST	Authenticate and get JWT
-/api/auth/refresh	POST	Refresh JWT token
-/api/auth/logout	POST	Logout and invalidate JWT
-/api/auth/password-reset	POST	Initiate password reset
-/api/auth/password-reset/confirm	POST	Complete password reset
-
-📝 Task Management
-Endpoint	Method	Description
-/api/tasks	GET	Retrieve all tasks (paginated)
-/api/tasks	POST	Create new task
-/api/tasks/{id}	GET	Get task by ID
-/api/tasks/{id}	PUT	Update task by ID
-/api/tasks/{id}	DELETE	Delete task by ID
-/api/tasks/{id}/complete	PATCH	Mark task as complete
-/api/tasks/{id}/incomplete	PATCH	Mark task as incomplete
 
 📄 License
 This project is licensed under the MIT License. See the LICENSE file for details.
