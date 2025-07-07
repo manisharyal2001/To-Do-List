@@ -22,7 +22,7 @@ A secure, scalable Java-based To-Do List application with **MongoDB**, **JWT-bas
 
 | Layer         | Technology           |
 |---------------|----------------------|
-| **Backend**   | Java 17, Spring Boot |
+| **Backend**   | Java 17, Vert.X |
 | **Database**  | MongoDB              |
 | **Auth**      | JWT, Redis           |
 | **Email**     | Spring Mail (Async)  |
@@ -93,48 +93,6 @@ Endpoint	Method	Description
 /api/tasks/{id}	DELETE	Delete task by ID
 /api/tasks/{id}/complete	PATCH	Mark task as complete
 /api/tasks/{id}/incomplete	PATCH	Mark task as incomplete
-
-⚙️ Configuration
-In src/main/resources/application.properties:
-
-properties
-Copy
-Edit
-# MongoDB
-spring.data.mongodb.uri=mongodb://localhost:27017/tododb
-
-# Redis
-spring.redis.host=localhost
-spring.redis.port=6379
-
-# JWT
-jwt.secret=your-secret-key
-jwt.expiration.ms=86400000 # 24 hours
-
-# Email
-spring.mail.host=smtp.example.com
-spring.mail.port=587
-spring.mail.username=user@example.com
-spring.mail.password=password
-🧪 Running Tests
-bash
-Copy
-Edit
-./mvnw test
-🚀 Deployment
-Build the JAR
-bash
-Copy
-Edit
-./mvnw clean package
-Run with Production Profile
-bash
-Copy
-Edit
-java -jar target/todo-list-app.jar --spring.profiles.active=prod
-🤝 Contributing
-Pull requests are welcome!
-For major changes, please open an issue first to discuss what you’d like to improve or add.
 
 📄 License
 This project is licensed under the MIT License. See the LICENSE file for details.
